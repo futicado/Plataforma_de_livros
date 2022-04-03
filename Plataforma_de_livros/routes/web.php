@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 */ 
 
+
+
+Route::get('/', 'teste@inicio');
+
