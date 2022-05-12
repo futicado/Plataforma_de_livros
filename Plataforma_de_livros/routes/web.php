@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::get('/', 'Main@login')->name('login');
 Route::post('/submissao','Main@submissao')->name('submissao');
 
+Route::get('/upload', 'Main@login')->name('upload');
+Route::post('/upload_submissao','Main@upload_submissao')->name('upload_submissao');
