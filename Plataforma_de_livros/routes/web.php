@@ -20,5 +20,6 @@ Route::get('/', function () {
 
 
 
-Route::get('/', 'teste@inicio');
+Route::get('/', 'Main@login')->name('login');
+Route::post('/submissao','Main@submissao')->name('submissao');
 
