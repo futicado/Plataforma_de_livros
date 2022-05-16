@@ -14,12 +14,11 @@
 
                 <h4 class="mb-3">Informações</h4>
                 <hr class="mb-4">
-                <form class="needs-validation" >
+                <form class="needs-validation" novalidate >
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">Nome</label>
-                            <input type="text" class="form-control" id="firstName" name="nome" placeholder="" value=""
-                                required>
+                            <input type="text" class="form-control" id="firstName" name="nome" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Necessário inserir o nome do livro
                             </div>
@@ -27,16 +26,16 @@
                         </div>
                         <div class="col-md-5 mb-3">
                             <label>Ano</label>
-                            <input type="date" class="form-control" name="ano">
+                            <input type="date" class="form-control" name="ano"  required>
                             </select>
                         </div>
 
                     </div>
 
                     <div class="mb-3">
-                        <label for="email">Email <span class="text-muted">(Opcional)</span></label>
+                        <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com.br"
-                            name="email">
+                            name="email"  required>
                         <div class="invalid-feedback">
                             Insira um e-mail válido
                         </div>
@@ -55,7 +54,7 @@
 
                     <div class="col-md-5 mb-3">
                         <label for="address2">ISBN
-                        <input type="text" class="form-control" id="address2" placeholder="ex: 978-3-16-148410-0">
+                        <input type="text" class="form-control" id="address2" placeholder="ex: 978-3-16-148410-0"  >
                     </div>
 
                         <div class="col-md-6 mb-3">
@@ -109,7 +108,7 @@
                 <div class="row">
                         <div class="col-md-13 mb-3">
                             <label for="zip">Descrição</label>
-                            <textarea class="form-control" name="descricao" placeholder="Descreva um pouco sobre o livro." cols="20" rows="10"></textarea>
+                            <textarea class="form-control" name="descricao" required  placeholder="Descreva um pouco sobre o livro." cols="18" rows="10" maxlength="600"></textarea>
                             <div class="invalid-feedback">
                                Necessário inserir uma breve descrição
                             </div>
@@ -117,7 +116,7 @@
                     </div>
                     <hr class="mb-4">
 
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Salvar</button>
                 </form>
             </div>
         </div>
