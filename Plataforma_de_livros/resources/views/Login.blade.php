@@ -5,7 +5,7 @@
 {{-- Erros   Erros no formulário. --}}
 @if ($errors->any())
 
-<center> 
+<center>
            @foreach ($errors->all() as $mensagem_erro)
            <div class="alert alert-info ">
                 <p>{{ $mensagem_erro }}</p>
@@ -14,7 +14,7 @@
     </center>
 @endif
         <center>
-            <form class="form-control" method="post" action="{{ Route('submissao') }}">
+            <form class= "form-control" method="post" action="{{ Route('submissao') }}">
                 @csrf
                 <div class="container-sm">
                     <img class="mb-4" src='../storage/app/img/logo.png' alt="" width="170" height="120">

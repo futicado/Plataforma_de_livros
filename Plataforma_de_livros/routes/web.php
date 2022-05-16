@@ -16,12 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-*/ 
+*/
 
 
 
 Route::get('/', 'Main@login')->name('login');
 Route::post('/submissao','Main@submissao')->name('submissao');
 
-Route::get('/upload', 'Main@login')->name('upload');
-Route::post('/upload_submissao','Main@upload_submissao')->name('upload_submissao');
+Route::get('/dashboard', 'Main@dashboard')->name('dashboard');
