@@ -25,12 +25,13 @@ public function submissao( Request $request){
          'senha.required'=> 'O campo senha é obrigatório !!'
         ]);
 
-
         //Informações vinda do formulário
 
        $email= $request->input('email');
        $senha= $request->input('senha');
 
+       // buscar no banco as informações e comparar.
+       return view('Dashboard');
 }
 
 
@@ -38,8 +39,13 @@ public function dashboard(){
     return view('Dashboard');
 }
 
-public function upload_submissao(Request $request){
+public function cadastrolivro(){
+    return view('CadastroLivros');
+}
 
+
+public function cadstrolivrosubmissao(Request $request){
+   // realizar o cadastro no banco de dados
 
 }
 
