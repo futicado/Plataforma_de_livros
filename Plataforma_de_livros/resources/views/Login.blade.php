@@ -18,7 +18,7 @@
                 @csrf
                 <div class="container-sm">
                     <img class="mb-4" src='../storage/app/img/logo.png' alt="" width="170" height="120">
-                    <h1 class="h3 mb-3 fw-normal">Plaforma de Livros</h1>
+                    <h1 class="h3 mb-4 fw-normal">Plataforma de Livros</h1>
 
                     <div class="form-floating">
                         <label for="floatingInput">Email&nbsp&nbsp&nbsp&nbsp&nbsp</label>
@@ -36,7 +36,7 @@
                     <br>
                     <br>
                 </div>
-                <p class="mt-5 mb-3 text-muted">© 2022</p>
+                <p class="mt-5 mb-4 text-muted">© 2022</p>
             </form>
     </div>
     </center>

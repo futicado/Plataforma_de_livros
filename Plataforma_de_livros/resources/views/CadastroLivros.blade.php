@@ -4,7 +4,7 @@
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" src="..\resources\img\logo.png" alt="" width="150" height="110">
             <h2>Cadastro do Livro</h2>
-            <p class="lead">Realize o cadastro do livro para doação, utilizando os campos abaixo: </p>
+            <p class="lead">Realize o cadastro do livro para doação ou troca, utilizando os campos abaixo: </p>
         </div>
 
         <div class="row">
@@ -14,11 +14,12 @@
 
                 <h4 class="mb-3">Informações</h4>
                 <hr class="mb-4">
-                <form class="needs-validation" novalidate >
+                <form class="needs-validation" novalidate action="{{route('cadastrolivrosubmissao')}}">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName">Nome</label>
-                            <input type="text" class="form-control" id="firstName" name="nome" placeholder="" value="" required>
+                            <label for="firstName">Nome do Livro</label>
+                            <input type="text" class="form-control" id="firstName" name="nomeliv" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Necessário inserir o nome do livro
                             </div>
@@ -28,6 +29,9 @@
                             <label>Ano</label>
                             <input type="date" class="form-control" name="ano"  required>
                             </select>
+                            <div class="invalid-feedback">
+                                Data do lançamento do livro
+                            </div>
                         </div>
 
                     </div>
@@ -54,10 +58,11 @@
 
                     <div class="col-md-5 mb-3">
                         <label for="address2">ISBN
-                        <input type="text" class="form-control" id="address2" placeholder="ex: 978-3-16-148410-0"  >
+                        <input type="text" class="form-control"
+                         id="address2" placeholder="ex: 978-3-16-148410-0"  name="isbn" >
                     </div>
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 6 mb-3">
                             <label for="state">Gênero</label>
                             <select class="form-control" required name="genero">
                                 <option value''> </option>
@@ -101,6 +106,18 @@
                             <div class="invalid-feedback">
                                 Selecione um gênero
                             </div>
+                        </div>
+                        <div class="col-md-3 6 mb-3">
+                            <label for="state">Tipo</label>
+                            <select class="form-control" required name="tipo">
+                            <option value""></option>
+                            <option value"1">Doação</option>
+                            <option value"2"> Troca </option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Selecione um Tipo
+                        </div>
                         </div>
 
                 </div>
