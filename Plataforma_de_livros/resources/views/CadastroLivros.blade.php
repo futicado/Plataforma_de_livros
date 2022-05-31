@@ -7,6 +7,8 @@
             <p class="lead">Realize o cadastro do livro para doação ou troca, utilizando os campos abaixo: </p>
         </div>
 
+
+
         <div class="row">
 
             <center><div class="card-body">
@@ -14,7 +16,7 @@
 
                 <h4 class="mb-3">Informações</h4>
                 <hr class="mb-4">
-                <form class="needs-validation" novalidate action="{{route('cadastrolivrosubmissao')}}">
+                <form class="needs-validation" novalidate action="{{route('cadastrolivrosubmissao')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -25,7 +27,7 @@
                             </div>
 
                         </div>
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-3 mb-2">
                             <label>Ano</label>
                             <input type="date" class="form-control" name="ano"  required>
                             </select>
@@ -34,7 +36,18 @@
                             </div>
                         </div>
 
-                    </div>
+                        <div class="col-md-3 mb-2">
+                            <label>Imagem</label>
+                            <input type="file" class="form-control" name="path" required >
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione uma imagem
+                            </div>
+                        </div>
+
+                </div>
+
+
 
                     <div class="mb-3">
                         <label for="email">Email</label>

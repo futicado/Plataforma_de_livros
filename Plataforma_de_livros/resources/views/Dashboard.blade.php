@@ -99,20 +99,19 @@
 
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-
-                                {{$list[0]}}
+                            @foreach ($lista as $res)
                                 <div class="col">
                                     <div class="card shadow-sm">
-                                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                                            <title>Placeholder</title>
-                                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%"
-                                                fill="#eceeef" dy=".3em">Thumbnail</text>
-                                        </svg>
+                                        <label style="padding: 1%;">{{$res->Nomeliv }}</label>
+                                        <img src="{{ '../storage/app/' . $res->Pathliv }}"
+                                            class="bd-placeholder-img card-img-top" width="50px" height="255"
+                                            focusable="false" target_blank>
+
+                                        <rect width="100%" height="100%" fill="#55595c"></rect>
+
 
                                         <div class="card-body">
-                                            <p class="card-text">dsdsdsd</p>
+                                            <p class="card-text" style="font-size:14px">{{$res->Descricaoliv}}</p>
 
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
@@ -134,9 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -144,7 +141,7 @@
 
 
         <!-- Bootstrap core JavaScript
-          ================================================== -->
+              ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
                 integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

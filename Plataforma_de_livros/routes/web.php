@@ -27,5 +27,6 @@ Route::get('/dashboard', 'Main@dashboard')->name('dashboard');
 
 
 Route::get('/cadastrolivro', 'Main@cadastrolivro')->name('cadastrolivro');
-Route::get('/cadastrolivrosubmissao', 'Main@cadastrolivrosubmissao')->name('cadastrolivrosubmissao');
+
+Route::post('/cadastrolivrosubmissao', 'Main@cadastrolivrosubmissao')->name('cadastrolivrosubmissao');
 
