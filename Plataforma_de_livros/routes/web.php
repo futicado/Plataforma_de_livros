@@ -30,3 +30,5 @@ Route::get('/cadastrolivro', 'Main@cadastrolivro')->name('cadastrolivro');
 
 Route::post('/cadastrolivrosubmissao', 'Main@cadastrolivrosubmissao')->name('cadastrolivrosubmissao');
 
+
+Route::post('/email', 'Main@email')->name('email');

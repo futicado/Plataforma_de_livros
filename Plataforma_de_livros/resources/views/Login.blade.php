@@ -1,5 +1,5 @@
 <div
-    style="background-image: url('../storage/app/img/livros.jpg');  background-size: cover;  background-repeat: no-repeat; height: 100%;">
+    style="background-image: url('../resources/img/livros.jpg');  background-size: cover;  background-repeat: no-repeat; height: 100%;">
     <div class="d-flex justify-content-center">
 
 {{-- Erros   Erros no formulário. --}}
@@ -17,7 +17,7 @@
             <form class= "form-control" method="post" action="{{ Route('submissao') }}">
                 @csrf
                 <div class="container-sm">
-                    <img class="mb-4" src='../storage/app/img/logo.png' alt="" width="170" height="120">
+                    <img class="mb-4"src="../resources/img/logo.png" alt="" width="170" height="120">
                     <h1 class="h3 mb-4 fw-normal">Plataforma de Livros</h1>
 
                     <div class="form-floating">

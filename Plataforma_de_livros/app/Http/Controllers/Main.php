@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use Illuminate\Support\Facades\Mail;
 
 class Main extends Controller
 {
@@ -100,4 +101,20 @@ class Main extends Controller
         // buscar no banco as informações e comparar.
         return redirect()->route('dashboard', ['lista' => $lista]);
     }
+
+public function email(){
+
+Mail::send('mail.email',['curso'],function($m){
+    $m->from('plataformadelivros@gmail.com','System');
+    $m->to('jhonatam.mattoss@hotmail.com');
+
+    $lista = DB::select('select * from tblivro');
+        // buscar no banco as informações e comparar.
+        return view('Dashboard', ['lista' => $lista]);
+});
 }
+
+}
+
+
+
