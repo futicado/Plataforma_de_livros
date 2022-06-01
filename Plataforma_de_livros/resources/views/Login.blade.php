@@ -1,5 +1,7 @@
 <div
+
     style="background-image: url({{ asset('img/livros.png') }});  background-size: cover;  background-repeat: no-repeat; height: 100%;">
+
     <div class="d-flex justify-content-center">
 
 {{-- Erros   Erros no formulário. --}}
@@ -17,7 +19,9 @@
             <form class= "form-control" method="post" action="{{ Route('submissao') }}">
                 @csrf
                 <div class="container-sm">
+
                     <img class="mb-4" src='{{ asset('img/livros.png') }}' alt="" width="170" height="120">
+
                     <h1 class="h3 mb-4 fw-normal">Plataforma de Livros</h1>
 
                     <div class="form-floating">
