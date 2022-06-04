@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
-
+use Illuminate\Support\Facades\Mail;
 
 class Main extends Controller
 {
@@ -102,14 +102,17 @@ class Main extends Controller
         return redirect()->route('dashboard', ['lista' => $lista]);
     }
 
-    public function email(Request $request){
+    public function email(){
 
 
-        
 
-        $lista = DB::select('select * from tblivro');
+            Mail::send('Mail.welcomemail', function ($message) {
+               $message->to('jhonatam.mattoss@hotmail.com')->cc('jhonatam.mattoss@hotmail.com');
+            });
+
+       /* $lista = DB::select('select * from tblivro');
         // buscar no banco as informações e comparar.
-        return redirect()->route('dashboard', ['lista' => $lista]);
+        return redirect()->route('dashboard', ['lista' => $lista]);*/
 
     }
 
