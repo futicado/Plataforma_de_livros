@@ -34,6 +34,12 @@ Route::post('/cadastrolivrosubmissao', 'Main@cadastrolivrosubmissao')->name('cad
 
 Route::post('/email', 'Main@email')->name('email');
 
+
+
+Route::get('/cadastro','Main@cadastro')->name('cadastro');
+Route::post('/verificacadastro','Main@verificacadastro')->name('verificacadastro');
+
+
 /*Route::get('/email', function(){
     Mail::to('jhonatam.mattoss@gmail.com')->send(new welcomemail());
     return new welcomemail();

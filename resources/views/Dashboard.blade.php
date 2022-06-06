@@ -120,8 +120,8 @@
                                                                 d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                                                         </svg></button>
 
-                                                    <a class="btn btn-sm btn-outline-secondary" href="#popup1"><svg
-                                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    <a class="btn btn-sm btn-outline-secondary" href="#{{$res->Pkcodliv}}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
                                                             <path
                                                                 d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
@@ -140,28 +140,36 @@
                 </div>
         </div>
 
-        <div id="popup1" class="overlay">
+        @foreach ($lista as $res)
+
+        <div id='{{$res->Pkcodliv}}' class="overlay">
             <div class="popup">
                 <h2>E-mail</h2>
                 <a class="close" href="#">&times;</a>
                 <div class="content">
                     <div class="modal-body">
                         <form method="post" action="{{ route('email') }}">
+                            @csrf
+                            <input type="hidden" name="nome" value="{{ $res->Nomeliv }}" >
+                            <input type="hidden" name="pkcodliv" value="{{ $res->Pkcodliv }}" >
+                            <input type="hidden" name="descricao" value="{{ $res->Descricaoliv }}">
+
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Titulo:</label>
-                                <input type="text" class="form-control" id="recipient-name" value="">
+                                <input type="text" class="form-control" id="recipient-name" value="" name="assunto">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
+                                <textarea class="form-control" id="message-text" name="mensagem"></textarea>
                             </div>
-                            <input type="submit">
+                            <br>
+                            <input class="" type="submit">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
+        @endforeach
         <style>
             .box {
                 width: 40%;

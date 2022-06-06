@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use Illuminate\Mail\Mailer as MailMailer;
 use Illuminate\Support\Facades\Mail;
+
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class Main extends Controller
 {
     public function login()
     {
-
         return view('login');
     }
 
@@ -40,8 +44,62 @@ class Main extends Controller
         $senha = $request->input('senha');
 
         $lista = DB::select('select * from tblivro');
+        $a=0;
+        foreach($lista as $dado ){
+            if($dado->Emailliv==$email){
+                $a=1;
+            }
+        }
+
+        if($a == 1){
+            $request->session()->put('email', $email);
+            // buscar no banco as informações e comparar.
+            return view('Dashboard', ['lista' => $lista]);   // enviando os dados para o view do Dashboard.
+
+        }else{
+            echo "<script>alert('Você não possui cadastro na plataforma, redirecionando... ')</script>";
+            return view('cadastro');   // enviando os dados para o view do Dashboard.
+        }
+
+    }
+
+
+    public function cadastro(){
+
+        return view('cadastro');
+    }
+
+    public function verificacadastro(Request $request){
+
+        $request->validate(
+            // regras de validação
+            [
+                'email' => 'required|max:30',
+                'senha' => 'required|max:30',
+                'nome' => 'required|min:15'
+            ],
+
+            [
+                'email.required' => 'O campo :attribute é obrigatório !!',
+                'email.min' => 'O campo :attribute é limitado a 30 caracteres !!',
+                'senha.required' => 'O campo senha é obrigatório !!',
+                'nome.min' => 'Verifique o nome é muito curto!!',
+                'nome.required' => 'Necessário inserir o nome!!'
+
+            ]
+        );
+
+
+        $nome= $request->nome;
+        $email = $request->email;
+        $senha = $request->senha;
+
+        $list=DB::insert('insert into tbusuario (Pkcodu, Nomeu, emailu, senhau) values (?, ?, ?, ?)', [null,  $nome, $email, $senha]);
+
+        $lista = DB::select('select * from tblivro');
         // buscar no banco as informações e comparar.
-        return view('Dashboard', ['lista' => $lista]);   // enviando os dados para o view do Dashboard.
+        return view('Dashboard', ['lista' => $lista]);
+
     }
 
     public function dashboard()
@@ -102,18 +160,37 @@ class Main extends Controller
         return redirect()->route('dashboard', ['lista' => $lista]);
     }
 
-    public function email(){
+    public function email(Request $request){
+        $nome = $request->nome;
+        $descricao =  $request->descricao;
+        $mensagem = $request->mensagem;
+        $pkcodliv = $request->pkcodliv;
+
+        $email = $request->session()->get('email');
+
+        $request->session()->put('pk',$pkcodliv);
+
+       $data = [
+            'name' => $nome,
+            'descricao' => $descricao,
+            'email' => $email,
+            'mensagem' => $mensagem
+        ];
 
 
+       // $pk=$$_SESSION()->$_GET('pk');
+       // $lista = DB::select("select Emailliv from tblivro where pkcodliv=$pk");
 
-            Mail::send('Mail.welcomemail', function ($message) {
-               $message->to('jhonatam.mattoss@hotmail.com')->cc('jhonatam.mattoss@hotmail.com');
-            });
+        //$email =$lista[0]->Emailliv;
 
-       /* $lista = DB::select('select * from tblivro');
-        // buscar no banco as informações e comparar.
-        return redirect()->route('dashboard', ['lista' => $lista]);*/
 
+       Mail::send('mail.welcomemail',['name' => $nome ,'descricao' => $descricao, 'email' => $email,  'mensagem' => $mensagem],function($m){
+
+            $m->from('plataformadelivros@gmail.com','Plataforma de Livros');
+            $m->to('jhonatam.mattoss@hotmail.com');
+        });
+   // return view('mail.welcomemail',['livro' => $data]);
+    echo "ok";
     }
 
 }
