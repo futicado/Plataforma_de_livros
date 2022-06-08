@@ -33,7 +33,7 @@ class Main extends Controller
             ],
             [
                 'email.required' => 'O campo :attribute é obrigatório !!',
-                'email.min' => 'O campo :attribute é limitado a 30 caracteres !!',
+                'email.max' => 'O campo :attribute é limitado a 30 caracteres !!',
                 'senha.required' => 'O campo senha é obrigatório !!'
             ]
         );
@@ -81,7 +81,7 @@ class Main extends Controller
 
             [
                 'email.required' => 'O campo :attribute é obrigatório !!',
-                'email.min' => 'O campo :attribute é limitado a 30 caracteres !!',
+                'email.max' => 'O campo :attribute é limitado a 30 caracteres !!',
                 'senha.required' => 'O campo senha é obrigatório !!',
                 'nome.min' => 'Verifique o nome é muito curto!!',
                 'nome.required' => 'Necessário inserir o nome!!'
