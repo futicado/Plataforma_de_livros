@@ -44,7 +44,3 @@ Route::get('/sair','Main@sair')->name('sair');
 
 Route::get('/deletar/{id}','Main@excluir')->name('deletar');
 
-/*Route::get('/email', function(){
-    Mail::to('jhonatam.mattoss@gmail.com')->send(new welcomemail());
-    return new welcomemail();
-});*/
