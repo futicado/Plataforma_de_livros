@@ -1,15 +1,28 @@
 @extends('Layout.layout')
 @section('conteudo')
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">&nbspPlataforma de Livros</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Buscar Livros"
-            aria-label="Buscar Livros">
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sair</a>
-            </li>
-        </ul>
+     {{-- validar se usuário com a session ative --}}
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Plataforma de Livros</a>
+         <div style="width:50%"><input class="form-control" type="text" placeholder="Buscar Livros"
+            aria-label="Buscar Livros" ></div>
+
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{session()->get('email')}}
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+
+                  <a class="nav-link" href="{{route('sair')}}"><center>Sair</center></a>
+                </ul>
+              </div>
+            </div>
+
     </nav>
+
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -81,6 +94,7 @@
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Anúncios recentes</h1>
 
+
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                         </div>
@@ -97,30 +111,33 @@
 
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
+                            @if(session('mensagem'))
+                                <script>alert('Anúncio pertence a outro usuário e não pode ser deletado!');</script>
+                            @endif
+
                             @foreach ($lista as $res)
-                                <div class="col">
+
+                                <div class="col-sm">
                                     <div class="card shadow-sm">
-                                        <label style="padding: 1%;">{{ $res->Nomeliv }}</label>
+                                        <label >{{ $res->Nomeliv }}</label>
                                         <img src="{{ '../storage/app/' . $res->Pathliv }}"
                                             class="bd-placeholder-img card-img-top" width="50px" height="255"
                                             focusable="false" target_blank>
 
                                         <rect width="100%" height="100%" fill="#55595c"></rect>
 
-
                                         <div class="card-body">
                                             <p class="card-text" style="font-size:14px">{{ $res->Descricaoliv }}</p>
 
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"><svg
-                                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                                            <path
-                                                                d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                                        </svg></button>
+                                                    <a  class="btn btn-sm btn-outline-secondary"  title="Excluir" href="deletar/{{$res->Pkcodliv}}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x" viewBox="0 0 16 16">
+                                                            <path d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z"/>
+                                                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                                          </svg></a>
 
-                                                    <a class="btn btn-sm btn-outline-secondary" href="#{{$res->Pkcodliv}}">
+                                                    <a title="Enviar E-mail" class="btn btn-sm btn-outline-secondary" href="#{{$res->Pkcodliv}}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
                                                             <path
@@ -170,6 +187,7 @@
             </div>
         </div>
         @endforeach
+
         <style>
             .box {
                 width: 40%;
