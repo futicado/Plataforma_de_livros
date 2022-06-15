@@ -23,8 +23,40 @@ class Main extends Controller
     public function cadastrolivro() {return view('CadastroLivros');}
     public function sair(Request $request){ $request->session()->forget('email');  return view('login'); }
 
-    public function dashboard() {
-        if(session()->get('email')== null ){
+    public function submissao(Request $request)
+    {
+
+        //validação
+        $request->validate(
+            // regras de validação
+            [
+                'email' => 'required|max:30',
+                'senha' => 'required|max:30'
+            ],
+            [
+                'email.required' => 'O campo :attribute é obrigatório !!',
+                'email.max' => 'O campo :attribute é limitado a 30 caracteres !!',
+                'senha.required' => 'O campo senha é obrigatório !!'
+            ]
+        );
+
+        //Informações vinda do formulário
+
+        $email = $request->input('email');
+        $senha = $request->input('senha');
+
+        $lista = DB::select('select * from tblivro');
+        $a=0;
+        foreach($lista as $dado ){
+            if($dado->Emailliv==$email){
+                $a=1;
+            }
+        }
+
+        if($a == 1){
+            $request->session()->put('email', $email);
+            // buscar no banco as informações e comparar.
+            return view('Dashboard', ['lista' => $lista]);   // enviando os dados para o view do Dashboard.
 
         }else{
          $lista = DB::select('select * from tblivro');
