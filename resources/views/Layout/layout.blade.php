@@ -17,10 +17,10 @@
 
 
 <style>
-      
-            </style>
+    
+</style>
 
-            <!-- Bootstrap core JavaScript
+<!-- Bootstrap core JavaScript
                   ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -40,6 +40,7 @@
 <body>
 
    @yield('conteudo')
+
 
 </body>
 </html>

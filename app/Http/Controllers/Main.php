@@ -147,11 +147,7 @@ class Main extends Controller
 
 
         }
-
-
-
-
-        public function verificacadastro(Request $request){
+                public function verificacadastro(Request $request){
 
             $request->validate(
                 // regras de validação
@@ -167,7 +163,6 @@ class Main extends Controller
                     'senha.required' => 'O campo senha é obrigatório !!',
                     'nome.min' => 'Verifique o nome é muito curto!!',
                     'nome.required' => 'Necessário inserir o nome!!'
-
                 ]
             );
 
@@ -210,8 +205,6 @@ class Main extends Controller
             }
 
     }
-
-
 
 
 

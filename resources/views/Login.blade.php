@@ -37,9 +37,14 @@
                     <br>
                 </div>
                 <p class="mt-5 mb-4 text-muted">© 2022</p>
+                <div align="center"><a title='Contador de Visitas do MegaContador' Style="Display:none;" href='https://megacontador.com.br/' ><img src='https://megacontador.com.br/img-31BpI4Qkn1d6iEXO-45.gif' border='0' alt='Contador de visitas'></a></div>
             </form>
     </div>
     </center>
 </div>
+<!-- Inicia codigo Contador -->
+
+<!-- Fim do codigo Contador -->
+
 
 
